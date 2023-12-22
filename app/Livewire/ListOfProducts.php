@@ -18,8 +18,8 @@ class ListOfProducts extends Component
     public function addToCart($id = null)
     {
         Log::info('Product ID: ' . $id);
-        // auth()->user()->products()->attach($id);
-        Product::find($id)->users()->attach(auth()->user()->id);
+        auth()->user()->products()->attach($id);
+        // Product::find($id)->users()->attach(auth()->user()->id);
         $this->dispatch('product-added-to-cart');
     }
 }

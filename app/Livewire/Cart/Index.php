@@ -13,6 +13,8 @@ class Index extends Component
 
     public function render()
     {
-        return view('livewire.' . $this->viewPath . '.index');
+        return view('livewire.' . $this->viewPath . '.index', [
+            'cartItems' => auth()->user()->products,
+        ]);
     }
 }
