@@ -9,6 +9,9 @@ use App\Models\User;
 
 class UserTable extends DataTableComponent
 {
+    public $editModalName;
+    public $deleteModalName;
+
     public function configure(): void
     {
         $this->setPrimaryKey('id');
@@ -34,11 +37,11 @@ class UserTable extends DataTableComponent
                 ->excludeFromColumnSelect()
                 ->label(
                     fn ($row, Column $column) => view('components.datatables.button-container', [
-                        'rowId' => $row->id,
+                        'rowId' => $row['id'],
                         'isEdit' => true,
-                        'editModalName' => 'edit-user',
+                        'editModalName' => $this->editModalName,
                         'isDelete' => true,
-                        'deleteModalName' => 'confirm-user-deletion',
+                        'deleteModalName' => $this->deleteModalName,
                         'isRestore' => false,
                         'restoreModalName' => '',
                     ])
