@@ -14,8 +14,8 @@ class ProductsSeeder extends Seeder
      */
     public function run(): void
     {
-        foreach ($this->products as $product) {
-            Product::create(...$product);
+        foreach ($this->products() as $product) {
+            Product::create([...$product]);
         }
     }
 

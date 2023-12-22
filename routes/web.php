@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Users;
+use App\Livewire\Products;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,12 +23,14 @@ Route::group(['middleware' => 'auth'], function () {
         ->middleware(['verified'])
         ->name('dashboard');
 
-    Route::view('profile', 'profile')
-        ->name('profile');
+    Route::view('profile', 'profile')->name('profile');
 
     Route::get('/users', Users\Index::class)
         ->middleware(['role:admin'])
         ->name('users.index');
+    Route::get('/products', Products\Index::class)
+        ->middleware(['role:admin'])
+        ->name('products.index');
 });
 
 
