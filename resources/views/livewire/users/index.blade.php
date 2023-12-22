@@ -23,6 +23,6 @@
     </div>
 
     {{-- MODALS --}}
-    <livewire:is component="{{ $viewPath }}.modals.edit" :$viewPath :$editModalName />
+    <livewire:is component="{{ $viewPath }}.modals.edit" :$viewPath :$editModalName :$listOfRoles />
     <livewire:is component="{{ $viewPath }}.modals.delete" :$viewPath :$deleteModalName />
 </div>

@@ -4,6 +4,7 @@ namespace App\Livewire\Users;
 
 use Livewire\Attributes\Locked;
 use Livewire\Component;
+use Spatie\Permission\Models\Role;
 
 class Index extends Component
 {
@@ -16,6 +17,8 @@ class Index extends Component
 
     public function render()
     {
-        return view('livewire.' . $this->viewPath . '.index');
+        return view('livewire.' . $this->viewPath . '.index', [
+            'listOfRoles' => Role::get()->toArray(),
+        ]);
     }
 }

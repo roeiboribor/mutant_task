@@ -1,7 +1,7 @@
 @props(['rowId' => null,'isEdit' => false,'editModalName' => '','isDelete' => false,'deleteModalName' => '','isRestore'
 =>
 false,'restoreModalName' => ''])
-<div class="flex space-x-2">
+<div wire:key="btn-container-{{ $rowId }}" class="flex space-x-2">
     @if ($isEdit)
     <button @click="$wire.dispatch('{{ $editModalName }}', { id: {{ $rowId }} });"
         x-on:click.prevent="$dispatch('open-modal', '{{ $editModalName }}')" type="button"

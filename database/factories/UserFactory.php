@@ -23,13 +23,16 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $pattern = '/[^A-Za-z\s_-]/';
         $gender = fake()->randomElement(['male', 'female']);
         $firstName = fake()->firstName($gender);
         $lastName = fake()->lastName($gender);
+        $name = $firstName . ' ' . $lastName;
+        $email = $firstName . '.' . $lastName;
 
         return [
-            'name' => $firstName . ' ' . $lastName,
-            'email' => strtolower(trim($firstName . '.' . $lastName . '_')) . '@gmail.com',
+            'name' => $name,
+            'email' => strtolower(trim(preg_replace($pattern, '.', $email))) . '@gmail.com',
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),

@@ -31,6 +31,13 @@ class UserTable extends DataTableComponent
                 ->sortable(),
             Column::make("Email", "email")
                 ->sortable(),
+            Column::make("Roles")
+                ->label(
+                    fn ($row, Column $column) => view('components.datatables.badge-container', [
+                        'data' => $row->roles->pluck('name'),
+                        'class' => 'text-xs'
+                    ])
+                ),
             Column::make("Created at", "created_at")
                 ->sortable(),
             Column::make('Actions', 'id')
