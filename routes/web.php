@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Users;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,12 +16,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::group(['middleware' => 'auth'], function () {
 
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
+    Route::view('dashboard', 'dashboard')
+        ->middleware(['verified'])
+        ->name('dashboard');
 
-require __DIR__.'/auth.php';
+    Route::view('profile', 'profile')
+        ->name('profile');
+
+    Route::get('/users', Users\Index::class)
+        ->middleware(['role:admin'])
+        ->name('users.index');
+});
+
+
+require __DIR__ . '/auth.php';
