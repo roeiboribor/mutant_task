@@ -9,7 +9,20 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="grid grid-cols-12 gap-4">
                 <div class="col-span-12">
-                    TOTAL HERE.....
+                    <div class="flex justify-between">
+                        <div>
+                            <h3 class="dark:text-gray-100 text-3xl">
+                                Total Amount: <span class="font-bold">{{ $totalAmount
+                                    }}</span>
+                            </h3>
+                        </div>
+                        <div>
+                            <x-primary-button
+                                class="transition-colors !bg-green-500 hover:!bg-green-700 !text-gray-100">
+                                <i class='bx bx-credit-card text-xl mr-3'></i> Checkout
+                            </x-primary-button>
+                        </div>
+                    </div>
                 </div>
                 @forelse ($cartItems as $cartItem)
                 <div class="col-span-12 md:col-span-6 xl:col-span-4">
