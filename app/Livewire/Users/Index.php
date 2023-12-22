@@ -9,10 +9,13 @@ class Index extends Component
 {
     #[Locked]
     public $editModalName = 'edit-user';
-    public $deleteModalName = 'confirm-user-deletion';
+    #[Locked]
+    public $deleteModalName = 'delete-user';
+    #[Locked]
+    public $viewPath = 'users';
 
     public function render()
     {
-        return view('livewire.users.index');
+        return view('livewire.' . $this->viewPath . '.index');
     }
 }

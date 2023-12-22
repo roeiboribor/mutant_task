@@ -18,5 +18,12 @@ class UserSeeder extends Seeder
         ]);
 
         \App\Models\User::first()->assignRole('admin');
+
+        $randomUsers = \App\Models\User::factory(10)->create();
+
+        // Assign Default Role to randomUsers
+        foreach ($randomUsers as $fakeUser) {
+            $fakeUser->assignRole('user');
+        }
     }
 }

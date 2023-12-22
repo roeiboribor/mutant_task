@@ -11,7 +11,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <x-action-message class="py-4" on="user-deleted">
                         <div class="flex justify-start">
-                            <span class="px-3 py-1.5 bg-green-600 rounded text-gray-100">
+                            <span class="px-6 py-2 bg-green-600 rounded text-gray-100">
                                 {{ __('User has been deleted') }}
                             </span>
                         </div>
@@ -23,5 +23,6 @@
     </div>
 
     {{-- MODALS --}}
-    <livewire:users.modals.delete />
+    <livewire:is component="{{ $viewPath }}.modals.edit" :$viewPath :$editModalName />
+    <livewire:is component="{{ $viewPath }}.modals.delete" :$viewPath :$deleteModalName />
 </div>

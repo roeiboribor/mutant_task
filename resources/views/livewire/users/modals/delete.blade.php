@@ -1,4 +1,4 @@
-<x-modal name="confirm-user-deletion" :show="$errors->isNotEmpty()" focusable>
+<x-modal name="{{ $deleteModalName ?? null }}" :show="$errors->isNotEmpty()" focusable>
     <form wire:submit="deleteUser" class="p-6">
 
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
