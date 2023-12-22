@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Product;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
 class ListOfProducts extends Component
@@ -14,11 +15,11 @@ class ListOfProducts extends Component
         ]);
     }
 
-    public function addToCart($id)
+    public function addToCart($id = null)
     {
-        dd([
-            'user' => auth()->user()->id,
-            'product' => $id,
-        ]);
+        Log::info('Product ID: ' . $id);
+        // auth()->user()->products()->attach($id);
+        Product::find($id)->users()->attach(auth()->user()->id);
+        $this->dispatch('product-added-to-cart');
     }
 }

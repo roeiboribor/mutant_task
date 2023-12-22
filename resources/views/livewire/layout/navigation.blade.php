@@ -5,6 +5,10 @@ use Livewire\Volt\Component;
 
 new class extends Component
 {
+    protected $listeners = [
+        'product-added-to-cart' => '$refresh'
+    ];
+
     /**
      * Log the current user out of the application.
      */
@@ -33,6 +37,14 @@ new class extends Component
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    @hasrole('user')
+                    <x-nav-link :href="route('cart.index')" :active="request()->routeIs('cart.index')" wire:navigate>
+                        <span class="rounded-full bg-purple-300/25 mr-2 px-1.5 py-0.5">{{
+                            Auth::user()->products()->count()
+                            }}</span>{{
+                        __('Cart') }}
+                    </x-nav-link>
+                    @endhasrole
                     @hasrole('admin')
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')" wire:navigate>
                         {{ __('Users') }}
@@ -102,6 +114,11 @@ new class extends Component
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            @hasrole('user')
+            <x-responsive-nav-link :href="route('cart.index')" :active="request()->routeIs('cart.index')" wire:navigate>
+                {{ __('Cart') }}
+            </x-responsive-nav-link>
+            @endhasrole
             @hasrole('admin')
             <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')"
                 wire:navigate>

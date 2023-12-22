@@ -1,4 +1,13 @@
 <div class="grid grid-cols-12 gap-4">
+    <div class="col-span-12">
+        <x-action-message on="product-added-to-cart">
+            <div class="flex justify-start">
+                <span class="px-6 py-2 bg-green-600 rounded text-gray-100">
+                    {{ __('Product has been added to cart') }}
+                </span>
+            </div>
+        </x-action-message>
+    </div>
     @forelse ($listOfProducts as $product)
     <div class="col-span-12 md:col-span-6 xl:col-span-4">
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">

@@ -2,6 +2,7 @@
 
 use App\Livewire\Users;
 use App\Livewire\Products;
+use App\Livewire\Cart;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +32,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/products', Products\Index::class)
         ->middleware(['role:admin'])
         ->name('products.index');
+
+    Route::get('/cart', Cart\Index::class)
+        ->middleware(['role:user'])
+        ->name('cart.index');
 });
 
 
