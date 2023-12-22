@@ -14,4 +14,7 @@
             </div>
         </div>
     </div>
+
+    {{-- MODALS --}}
+    <livewire:users.modals.delete />
 </div>

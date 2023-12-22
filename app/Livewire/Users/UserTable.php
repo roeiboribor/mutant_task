@@ -36,8 +36,11 @@ class UserTable extends DataTableComponent
                     fn ($row, Column $column) => view('components.datatables.button-container', [
                         'rowId' => $row->id,
                         'isEdit' => true,
+                        'editModalName' => 'edit-user',
                         'isDelete' => true,
+                        'deleteModalName' => 'confirm-user-deletion',
                         'isRestore' => false,
+                        'restoreModalName' => '',
                     ])
                 ),
         ];
