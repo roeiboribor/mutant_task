@@ -8,6 +8,16 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="grid grid-cols-12 gap-4">
+                <div x-data="{ isVisible: true }" class="col-span-12">
+                    @if (session('status'))
+                    <div @click="isVisible = !isVisible" x-show="isVisible"
+                        class="bg-green-500 p-4 rounded text-green-800">
+                        <p class="font-semibold">
+                            {{ session('status') }}
+                        </p>
+                    </div>
+                    @endif
+                </div>
                 <div class="col-span-12">
                     <div class="flex justify-between">
                         <div>
@@ -50,7 +60,8 @@
                 <div class="col-span-12">
                     <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 text-gray-900 dark:text-gray-100">
-                            No Result Found
+                            No Items in your Cart <a href="{{ route('dashboard') }}" class="text-blue-500 underline"
+                                wire:navigate>Buy Now</a>
                         </div>
                     </div>
                 </div>
