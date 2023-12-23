@@ -40,7 +40,7 @@ class Index extends Component
                             'product_data' => [
                                 'name' => $names
                             ],
-                            'unit_amount' => intval($this->totalAmount),
+                            'unit_amount' => (int) $this->cartItems->sum('price'),
                         ],
                         'quantity' =>  1,
                     ]
