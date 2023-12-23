@@ -23,4 +23,9 @@ class Index extends Component
     {
         $this->totalAmount = number_format(auth()->user()->products->sum('price'), 2);
     }
+
+    public function checkout()
+    {
+        dd('checkout');
+    }
 }

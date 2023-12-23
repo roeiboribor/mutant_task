@@ -26,7 +26,7 @@
                             <span class="font-semibold">{{ number_format($product['price'],2) }}</span>
                         </div>
                         <div>
-                            <x-primary-button wire:click="addToCart({{ $product['id'] }})"
+                            <x-primary-button wire:loading.attr="disabled" wire:click="addToCart({{ $product['id'] }})"
                                 class="transition-colors !bg-orange-700 hover:!bg-orange-800 !text-gray-100 !py-1 !px-2">
                                 <i class='bx bx-cart-add text-base mr-3'></i> Add to Cart
                             </x-primary-button>

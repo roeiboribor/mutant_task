@@ -17,7 +17,15 @@ class UserSeeder extends Seeder
             'email' => 'admin@mutant.ae',
         ]);
 
-        \App\Models\User::first()->assignRole('admin');
+        \App\Models\User::factory()->create([
+            'name' => 'User 001',
+            'email' => 'user@mutant.ae',
+        ]);
+
+        $users = \App\Models\User::get();
+
+        $users[0]->assignRole('admin');
+        $users[1]->assignRole('user');
 
         $randomUsers = \App\Models\User::factory(10)->create();
 

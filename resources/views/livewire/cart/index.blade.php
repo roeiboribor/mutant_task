@@ -17,7 +17,7 @@
                             </h3>
                         </div>
                         <div>
-                            <x-primary-button
+                            <x-primary-button wire:loading.attr="disabled" wire:click="checkout"
                                 class="transition-colors !bg-green-500 hover:!bg-green-700 !text-gray-100">
                                 <i class='bx bx-credit-card text-xl mr-3'></i> Checkout
                             </x-primary-button>
