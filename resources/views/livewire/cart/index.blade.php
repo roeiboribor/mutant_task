@@ -11,7 +11,7 @@
                 <div x-data="{ isVisible: true }" class="col-span-12">
                     @if (session('status'))
                     <div @click="isVisible = !isVisible" x-show="isVisible"
-                        class="bg-green-500 p-4 rounded text-green-800">
+                        class="bg-green-500 p-4 rounded text-green-800 cursor-pointer">
                         <p class="font-semibold">
                             {{ session('status') }}
                         </p>
